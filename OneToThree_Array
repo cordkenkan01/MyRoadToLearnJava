@@ -1,0 +1,71 @@
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.util.Arrays;
+
+public class OneToThree_Array{
+	public static void writeme(int[] arr1, int[] arr2, int[] arr3) throws IOException{
+		//All Output Data is going to Logs in Java Folder;
+		FileWriter wr = new FileWriter("C://Users//jenra//Desktop//JAVA//Logs//spliter3.txt");
+		BufferedWriter writer = new BufferedWriter(wr);
+		
+		writer.write(Arrays.toString(arr1));
+		writer.newLine();
+		writer.write(Arrays.toString(arr2));
+		writer.newLine();
+		writer.write(Arrays.toString(arr3));
+		writer.newLine();
+		writer.write("All Data Ouput");
+		writer.close();
+	}
+	static public void main(String args[]){
+		int set, set1, set2, set3;
+		 
+		set = 1;
+		set1 = 0;
+		set2 = 0;
+		set3 = 0;
+		
+		int arrmain[] = {-2564505, -2320786, -6287055, 9001827, 3325521, -5399966, -9585261, -3210861, 3497139, 5355037, 1793922, -7694489, -2171891, -5828655, -5019707, 6119721, -2091710, 6371573, 8713180, -2321682, -3978440, -7799120, 4099652, -6096286, -879912, 486633, -1315184, -9825357, -4939744, -2491157, -8871955, 2495751, 5188056, -5159010, 1497578, -1486422, -558977, 1912317, 5302717, -7061837, -2732646, -2903361, -4756327, 5095463, 1267983, 223966, 1215185, 9176273, -3404460, -71634, -3145409, 2617099, 2129245, -9045757, 6520813, -8750666, 1440876, -4794371, -8576024, 6501132};
+		int index = arrmain.length;
+		if ((arrmain.length % 3) == 0){
+			index = arrmain.length / 3;
+		}
+		else if (arrmain.length % 2 == 0){
+			index = arrmain.length / 3;
+			index +=1;
+			
+		}
+		else{
+			index = arrmain.length / 3;
+			index +=2;
+		}
+		int arr1[] = new int[index];
+		int arr2[] = new int[index];
+		int arr3[] = new int[index];
+		for (int i = 0;i < arrmain.length;i++){
+			if (set == 1){
+				arr1[set1] = arrmain[i];
+				set1++;
+				System.out.println("First");
+			}
+			else if(set == 2){
+				arr2[set2] = arrmain[i];
+				set2++;
+				System.out.println("Second");
+			}
+			else{
+				arr3[set3] = arrmain[i];
+				set = 0;
+				set3++;
+			}
+			set++;
+		}
+		Test m = new Test();
+		try{
+	    m.writeme(arr1,arr2, arr3);}
+		catch(IOException ioe){
+			System.out.println("Error Code 200" + ioe);
+		}
+	}
+}
